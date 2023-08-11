@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/08 11:20:55 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:25:03 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	ft_free(char ***map)
 	long int i;
 
 	i = 0;
-	while ((*map)[i])
-	{
+	while ((*map)[i]) {
 		free((*map)[i]);
 		i++;
 	}
@@ -33,64 +32,39 @@ char	*ft_read(int ifd)
 	int		n;
 
 	content = NULL;
-	while ((n = read(ifd, buf, FT_BUFSIZ)) > 0)
-	{
+	while ((n = read(ifd, buf, FT_BUFSIZ)) > 0) {
 		buf[n] = '\0';
-		if (content == NULL)
+		if (content == NULL) {
 			content = ft_strdup(buf);
-		else
+		} else {
 			content = ft_strjoin(content, buf);
+		}
 	}
 	return (content);
 }
 
-int		ft_main_1(void)
+int		ft_main(int fd)
 {
 	char	*content;
 	char	**map;
 	t_info	*info;
 
-	content = ft_read(0);
-	if (ft_validate_4(content) == FAIL)
+	content = ft_read(fd);
+	if (ft_validate_4(content) == FAIL) {
 		return (FAIL);
+	}
 	map = ft_split(content, "\n");
 	free(content);
-	if (ft_validate_5(map) == FAIL)
+	if (ft_validate_5(map) == FAIL) {
 		return (FAIL);
-	if (!(info = ft_prse(map)))
+	}
+	if (!(info = ft_prse(map))) {
 		return (FAIL);
-	if (ft_validate(map, info) == FAIL)
+	}
+	if (ft_validate(map, info) == FAIL) {
 		return (FAIL);
+	}
 	ft_make_map(map, info);
-	ft_free(&map);
-	free(info);
-	return (SUCCESS);
-}
-
-int		ft_main_2(int argc, char *argv[], int i)
-{
-	int		ifd;
-	char	*content;
-	char	**map;
-	t_info	*info;
-
-	if ((ifd = open(argv[i], O_RDONLY)) == -1)
-		return (FAIL);
-	content = ft_read(ifd);
-	if (ft_validate_4(content) == FAIL)
-		return (FAIL);
-	close(ifd);
-	map = ft_split(content, "\n");
-	free(content);
-	if (ft_validate_5(map) == FAIL)
-		return (FAIL);
-	if (!(info = ft_prse(map)))
-		return (FAIL);
-	if (ft_validate(map, info) == FAIL)
-		return (FAIL);
-	ft_make_map(map, info);
-	if (!(i + 1 == argc))
-		ft_putstr("\n");
 	ft_free(&map);
 	free(info);
 	return (SUCCESS);
@@ -98,21 +72,25 @@ int		ft_main_2(int argc, char *argv[], int i)
 
 int		main(int argc, char *argv[])
 {
-	int i;
-
-	if (argc < 2)
-	{
-		if (ft_main_1() == FAIL)
+	if (argc < 2) {
+		if (ft_main(STDIN_FILENO) == FAIL) {
 			ft_puterror(FT_ERR_MAP);
-	}
-	else
-	{
-		i = 0;
-		while (++i < argc)
-		{
-			if (ft_main_2(argc, argv, i) == FAIL)
-				ft_puterror(FT_ERR_MAP);
 		}
+		return (0);
+	}
+	for (int i = 1; i < argc; i++) {
+		int fd = open(argv[i], O_RDONLY);
+
+		if (fd == -1) {
+			return (FAIL);
+		}
+		if (ft_main(fd) == FAIL) {
+			ft_puterror(FT_ERR_MAP);
+		}
+		if ((i + 1) != argc) {
+			ft_putstr("\n");
+		}
+		close(fd);
 	}
 #ifdef LEAKS
 	system("leaks -q bsq");
