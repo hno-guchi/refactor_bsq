@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 17:52:59 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:02:51 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ bool	ft_is_same_length_of_lines(char **map, t_info *info)
 	while (map[i]) {
 		if (len != ft_strlen(map[i])) {
 			return (false);
+		}
 		i++;
 	}
 	if (i - 1 != info->num_rows) {

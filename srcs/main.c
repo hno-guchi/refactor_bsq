@@ -6,13 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 18:31:18 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:02:08 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	ft_free(char ***map)
+void	ft_free_map(char ***map)
 {
 	long int i;
 
@@ -70,7 +70,7 @@ int		ft_main(int fd)
 
 	// Do bsq, Print
 	ft_make_map(map, info);
-	ft_free(&map);
+	ft_free_map(&map);
 	free(info);
 	return (SUCCESS);
 }
