@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 10:25:03 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:31:18 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_free(char ***map)
 	*map = NULL;
 }
 
-char	*ft_read(int ifd)
+char	*ft_read_data(int ifd)
 {
 	char	*content;
 	char	buf[FT_BUFSIZ + 1];
@@ -49,10 +49,13 @@ int		ft_main(int fd)
 	char	**map;
 	t_info	*info;
 
-	content = ft_read(fd);
-	if (ft_validate_4(content) == FAIL) {
+	// Read data
+	content = ft_read_data(fd);
+	if (ft_is_last_newline(content) == false) {
 		return (FAIL);
 	}
+
+	// Create map
 	map = ft_split(content, "\n");
 	free(content);
 	if (ft_validate_5(map) == FAIL) {
@@ -61,16 +64,18 @@ int		ft_main(int fd)
 	if (!(info = ft_prse(map))) {
 		return (FAIL);
 	}
-	if (ft_validate(map, info) == FAIL) {
+	if (ft_validate_map(map, info) == FAIL) {
 		return (FAIL);
 	}
+
+	// Do bsq, Print
 	ft_make_map(map, info);
 	ft_free(&map);
 	free(info);
 	return (SUCCESS);
 }
 
-int		main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	if (argc < 2) {
 		if (ft_main(STDIN_FILENO) == FAIL) {

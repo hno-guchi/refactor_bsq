@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 06:37:38 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:56:19 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ t_info	*ft_prse(char **map)
 	info = malloc(sizeof(t_info *));
 	num = malloc(sizeof(char) * (len - 3) + 1);
 	i = -1;
-	while (++i < len - 3)
+	while (++i < len - 3) {
 		num[i] = line[i];
+	}
 	num[i] = '\0';
 	info->num_rows = ft_atoi(num);
 	info->empty = line[len - 3];

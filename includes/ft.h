@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 08:07:27 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:54:37 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <libgen.h>
 
@@ -61,8 +62,8 @@ char			**ft_split(char *str, char *charset);
 int				ft_atoi(char *str);
 int				ft_validate_5(char **map);
 t_info			*ft_prse(char **map);
-int				ft_validate(char **map, t_info *info);
-int				ft_validate_4(char *content);
+int				ft_validate_map(char **map, t_info *info);
+bool			ft_is_last_newline(char *content);
 void			set_tempcrs(t_tempcrs *p_tempcrs);
 int				ft_check_1(char **map, int col, int row, t_info *p_info);
 void			ft_make_map(char **map, t_info *p_info);
