@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 19:02:08 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:39:16 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 void	ft_free_map(char ***map)
 {
@@ -43,6 +43,23 @@ char	*ft_read_data(int ifd)
 	return (content);
 }
 
+typedef enum s_error_kind	t_error_kind;
+
+enum	s_error_kind {
+	NOT_EXIST_LAST_NEWLINE
+};
+
+void	error_exit(t_error_kind type) {
+	switch(type) {
+		case NOT_EXIST_LAST_NEWLINE:
+			ft_puterror(FT_ERR_MAP);
+			break;
+		default:
+			break;
+	};
+	exit(1);
+}
+
 int		ft_main(int fd)
 {
 	char	*content;
@@ -52,7 +69,9 @@ int		ft_main(int fd)
 	// Read data
 	content = ft_read_data(fd);
 	if (ft_is_last_newline(content) == false) {
-		return (FAIL);
+		free(content);
+		error_exit(NOT_LAST_NEWLINE);
+		// return (FAIL);
 	}
 
 	// Create map
@@ -78,9 +97,10 @@ int		ft_main(int fd)
 int	main(int argc, char *argv[])
 {
 	if (argc < 2) {
-		if (ft_main(STDIN_FILENO) == FAIL) {
-			ft_puterror(FT_ERR_MAP);
-		}
+		ft_main(STDIN_FILENO);
+		// if (ft_main(STDIN_FILENO) == FAIL) {
+		// 	ft_puterror(FT_ERR_MAP);
+		// }
 		return (0);
 	}
 	for (int i = 1; i < argc; i++) {

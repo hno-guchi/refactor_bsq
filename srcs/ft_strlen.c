@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 14:23:03 by hnoguchi         ###   ########.fr       */
+/*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
+/*   Updated: 2023/08/12 14:43:58 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
-void	ft_putchar(char c)
+int	ft_strlen(const char *str)
 {
-	write(1, &c, 1);
-}
+	int i;
 
-void	ft_putstr(char *str)
-{
-	while (*str)
-		ft_putchar(*str++);
-}
-
-void	ft_puterror(char *str)
-{
-	ft_putstr(ERROR_PREFIX);
-	while (*str)
-		write(2, str++, 1);
+	i = 0;
+	while (str[i] != '\0') {
+		i += 1;
+	}
+	return (i);
 }

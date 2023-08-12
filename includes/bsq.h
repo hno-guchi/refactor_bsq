@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   bsq.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 17:54:37 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:44:42 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#ifndef BSQ_H
+# define BSQ_H
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -24,7 +24,8 @@
 # define OUT 0
 # define SUCCESS 1
 # define FAIL 0
-# define FT_ERR_MAP "map error\n"
+# define ERROR_PREFIX "map error\n"
+# define ERROR_NOT_EXIST_NEWLINE "map error: Not exist newline\n"
 
 typedef	struct	s_bsq
 {
@@ -51,10 +52,10 @@ typedef	struct	s_tempcrs
 int				g_max;
 int				g_col;
 int				g_row;
+int				ft_strlen(const char *str);
 void			ft_putchar(char c);
 void			ft_putstr(char *str);
 void			ft_puterror(char *str);
-int				ft_strlen(char *str);
 int				ft_is_printable(char c);
 char			*ft_strdup(char *src);
 char			*ft_strjoin(char *s1, char *s2);
