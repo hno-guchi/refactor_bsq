@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/29 13:52:03 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:02:48 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 char	*ft_strdup(char *src)
 {

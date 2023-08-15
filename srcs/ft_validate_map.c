@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 19:02:51 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:04:16 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 bool	ft_is_map_character(char c, t_info *info) {
 	if (c != info->empty && c != info->obstacle) {
@@ -52,8 +52,8 @@ bool		ft_is_map_elements(char **map, t_info *info)
 
 bool	ft_is_same_length_of_lines(char **map, t_info *info)
 {
-	int i;
-	int len;
+	int		i;
+	size_t	len;
 
 	i = 1;
 	len = ft_strlen(map[i]);

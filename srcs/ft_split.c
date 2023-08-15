@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 00:56:51 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:03:18 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 int		g_word_index = 0;
 int		g_start = 0;

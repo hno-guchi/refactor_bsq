@@ -6,19 +6,9 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/29 22:46:31 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:12:00 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int		ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int		ft_is_printable(char c)
 {

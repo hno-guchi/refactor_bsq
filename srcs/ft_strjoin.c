@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:41:41 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/29 15:49:35 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:03:04 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

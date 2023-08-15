@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 19:02:06 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:03:33 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 bool	ft_isdigit(const char c) {
 	return ('0' <= c && c <= '9');

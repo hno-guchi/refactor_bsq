@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 14:39:16 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:01:05 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,6 @@ char	*ft_read_data(int ifd)
 	return (content);
 }
 
-typedef enum s_error_kind	t_error_kind;
-
-enum	s_error_kind {
-	NOT_EXIST_LAST_NEWLINE
-};
-
-void	error_exit(t_error_kind type) {
-	switch(type) {
-		case NOT_EXIST_LAST_NEWLINE:
-			ft_puterror(FT_ERR_MAP);
-			break;
-		default:
-			break;
-	};
-	exit(1);
-}
-
 int		ft_main(int fd)
 {
 	char	*content;
@@ -70,7 +53,7 @@ int		ft_main(int fd)
 	content = ft_read_data(fd);
 	if (ft_is_last_newline(content) == false) {
 		free(content);
-		error_exit(NOT_LAST_NEWLINE);
+		error_exit(NOT_EXIST_LAST_NEWLINE);
 		// return (FAIL);
 	}
 
@@ -109,11 +92,12 @@ int	main(int argc, char *argv[])
 		if (fd == -1) {
 			return (FAIL);
 		}
-		if (ft_main(fd) == FAIL) {
-			ft_puterror(FT_ERR_MAP);
-		}
+		ft_main(fd);
+		// if (ft_main(fd) == FAIL) {
+		// 	ft_puterror(FT_ERR_MAP);
+		// }
 		if ((i + 1) != argc) {
-			ft_putstr("\n");
+			ft_putchar_fd(STDIN_FILENO, '\n');
 		}
 		close(fd);
 	}

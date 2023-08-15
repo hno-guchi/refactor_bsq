@@ -6,12 +6,12 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 02:37:11 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:04:48 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "ft.h"
+#include "bsq.h"
 
 extern	int g_max;
 extern	int g_col;
