@@ -6,13 +6,14 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/15 21:12:00 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/16 09:45:23 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_printable(char c)
+int	ft_is_printable(char c)
 {
-	if (c < 0x20 || c == 0x7f)
+	if (c < 0x20 || c == 0x7f) {
 		return (0);
+	}
 	return (1);
 }

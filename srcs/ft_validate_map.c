@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/15 23:04:16 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/16 09:50:16 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ bool	ft_is_same_length_of_lines(char **map, t_info *info)
 	return (true);
 }
 
-bool	ft_is_last_newline(char *content)
+bool	is_last_newline(const char *content)
 {
+	if (content == NULL) {
+		return (false);
+	}
 	int		i;
 
 	i = 0;

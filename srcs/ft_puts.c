@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/15 23:01:42 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/16 10:00:47 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,29 @@ void	ft_putstr_fd(int fd, const char *str)
 	write(fd, str, str_size);
 }
 
-void	ft_error_message(const char *message)
+void	error_message(const char *message)
 {
 	ft_putstr_fd(STDERR_FILENO, ERROR_PREFIX);
 	ft_putstr_fd(STDERR_FILENO, message);
 	ft_putchar_fd(STDERR_FILENO, '\n');
 }
 
-void	error_exit(t_error_kind type) {
+void	map_error_exit(t_error_kind type)
+{
 	switch(type) {
 		case NOT_EXIST_LAST_NEWLINE:
-			ft_error_message(ERROR_NOT_EXIST_NEWLINE);
+			error_message(ERROR_NOT_EXIST_NEWLINE);
 			break;
 		default:
 			break;
 	};
-	exit(1);
+	exit(EXIT_FAILURE);
+}
+
+void	fatal_error(const char *location)
+{
+	ft_putstr_fd(STDERR_FILENO, FATAL_ERROR_PREFIX);
+	ft_putstr_fd(STDERR_FILENO, location);
+	ft_putchar_fd(STDERR_FILENO, '\n');
+	exit(EXIT_FAILURE);
 }
