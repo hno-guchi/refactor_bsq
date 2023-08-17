@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 10:24:16 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/17 10:49:22 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	do_bsq(int fd)
 	}
 
 	// Create map
-	map = ft_split(content, "\n");
+	map = ft_split(content, '\n');
 	free(content);
 	if (ft_validate_5(map) == FAIL) {
 		return (FAIL);

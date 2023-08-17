@@ -6,7 +6,7 @@
 #    By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2023/08/16 09:46:12 by hnoguchi         ###   ########.fr        #
+#    Updated: 2023/08/17 10:48:11 by hnoguchi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ CFLAGS = -Wall -Wextra -Werror
 OVER_FLOW = -g -fsanitize=address
 SRCS = main.c \
 	   ft_puts.c ft_strlen.c ft_is_printable.c ft_strdup.c ft_strjoin.c \
-	   ft_split.c ft_atoi.c ft_info.c ft_validate_map.c \
+	   ft_split.c ft_calloc.c ft_bzero.c ft_memset.c ft_substr.c ft_strlcpy.c \
+	   ft_atoi.c ft_info.c ft_validate_map.c \
 	   makesquare2.c helpmakesquare.c
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:%.c=%.o))
 SRCS_DIR = ./srcs

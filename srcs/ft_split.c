@@ -3,111 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 10:47:24 by hnoguchi         ###   ########.fr       */
+/*   Created: 2022/04/08 15:38:49 by hnoguchi          #+#    #+#             */
+/*   Updated: 2023/08/17 10:52:27 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int		g_word_index = 0;
-int		g_start = 0;
-int		g_end = 0;
-int		g_state = 0;
-
-static bool	is_in_charset(char c, char *charset)
+static char	**ft_frees(char **sp, size_t i)
 {
-	size_t	i = 0;
-
-	while (charset[i]) {
-		if (charset[i] == c) {
-			return (true);
-		}
-		i += 1;
-	}
-	return (false);
-}
-
-static int	get_word_count(char *str, char *charset)
-{
-	size_t	i = 0;
-	int		wc = 0;
-	int		state = OUT;
-
-	while (str[i] != '\0')
+	while (0 < i)
 	{
-		if (is_in_charset(str[i], charset)) {
-			state = OUT;
-		}
-		else if (state == OUT) {
-			state = IN;
-			wc += 1;
-		}
-		i += 1;
+		i -= 1;
+		free(sp[i]);
 	}
-	return (wc);
+	free(sp);
+	return (NULL);
 }
 
-void	ft_update_in_word(int i)
+static char	**make_split(char const *s, int c, char **sp, size_t cnt)
 {
-	if (g_state == OUT)
+	size_t	sp_i;
+	size_t	head_i;
+	size_t	tail_i;
+
+	sp_i = 0;
+	head_i = 0;
+	tail_i = 0;
+	while (sp_i < (cnt - 1))
 	{
-		g_state = IN;
-		g_start = i;
-		g_end = i;
-	}
-	else
-		g_end = i;
-}
-
-void	ft_add_last_word(char **res, char *str, int i)
-{
-	int j;
-
-	if (g_state == IN)
-	{
-		res[g_word_index] = malloc(sizeof(char) * ((i - g_start) + 1));
-		j = -1;
-		while (g_start <= i)
-			res[g_word_index][++j] = str[g_start++];
-		res[g_word_index][++j] = '\0';
-		g_word_index++;
-	}
-	res[g_word_index] = 0;
-	g_word_index = 0;
-	g_start = 0;
-	g_end = 0;
-	g_state = 0;
-}
-
-char	**ft_split(char *str, char *charset)
-{
-	char	**res = NULL;
-	int		i = 0;
-	int		j = 0;
-
-	res = malloc(sizeof(char *) * (get_word_count(str, charset) + 1));
-	while (str[i] != '\0')
-	{
-		if (is_in_charset(str[i], charset) && g_state == IN) {
-			g_state = OUT;
-			res[g_word_index] = malloc(sizeof(char) * ((g_end - g_start) + 1));
-			j = 0;
-			while (g_start <= g_end) {
-				res[g_word_index][j] = str[g_start];
-				j += 1;
-				g_start += 1;
-			}
-			res[g_word_index][j] = '\0';
-			g_word_index += 1;
+		while (s[head_i] == c && s[head_i] != '\0')
+			head_i += 1;
+		tail_i = head_i;
+		while (s[tail_i] != c && s[tail_i] != '\0')
+			tail_i += 1;
+		if (0 < (tail_i - head_i))
+		{
+			sp[sp_i] = ft_substr(&s[head_i], 0, tail_i - head_i);
+			if (sp[sp_i] == NULL)
+				return (ft_frees(sp, sp_i));
+			sp_i += 1;
 		}
-		else {
-			ft_update_in_word(i);
-		}
-		i += 1;
+		head_i = tail_i;
 	}
-	ft_add_last_word(res, str, i);
-	return (res);
+	return (sp);
 }
+
+static size_t	count_split(char const *s, char c)
+{
+	size_t		s_len;
+	size_t		head_i;
+	size_t		tail_i;
+	size_t		cnt;
+
+	s_len = ft_strlen(s);
+	head_i = 0;
+	tail_i = 0;
+	cnt = 1;
+	while (head_i < s_len)
+	{
+		while (s[head_i] == c && head_i < s_len)
+			head_i += 1;
+		tail_i = head_i;
+		while (s[tail_i] != c && tail_i < s_len)
+			tail_i += 1;
+		if (0 < (tail_i - head_i))
+			cnt += 1;
+		head_i = tail_i;
+	}
+	return (cnt);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	cnt;
+	char	**split;
+
+	if (s == NULL)
+		return (NULL);
+	cnt = count_split(s, c);
+	split = (char **)ft_calloc(cnt, sizeof(char *));
+	if (split == NULL)
+		return (NULL);
+	split = make_split(s, c, split, cnt);
+	return (split);
+}
+
+
