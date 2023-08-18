@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utility.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 09:45:23 by hnoguchi         ###   ########.fr       */
+/*   Created: 2023/08/18 17:41:22 by hnoguchi          #+#    #+#             */
+/*   Updated: 2023/08/18 17:41:48 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_printable(char c)
+#include "bsq.h"
+
+void	ft_putstr_fd(int fd, const char *str)
 {
-	if (c < 0x20 || c == 0x7f) {
-		return (0);
+	if (str == NULL) {
+		return ;
 	}
-	return (1);
+	size_t	str_size = ft_strlen(str);
+	write(fd, str, str_size);
 }

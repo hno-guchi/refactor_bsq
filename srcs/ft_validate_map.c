@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 09:50:16 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/18 16:40:15 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@ bool	ft_is_map_character(char c, t_info *info) {
 	return (true);
 }
 
-// int		ft_validate_1(char **map, t_info *info)
-// {
-// 	if (map[0] == NULL || map[1] == NULL) {
-// 		return (FAIL);
-// 	}
-// 	if (ft_is_map_character(map[1][0], info) == false) {
-// 		return (FAIL);
-// 	}
-// 	return (SUCCESS);
-// }
-
 bool		ft_is_map_elements(char **map, t_info *info)
 {
 	int i;
@@ -39,7 +28,6 @@ bool		ft_is_map_elements(char **map, t_info *info)
 	while (map[i]) {
 		j = 0;
 		while (map[i][j]) {
-			// if (!(map[i][j] == info->empty || map[i][j] == info->obstacle))
 			if (ft_is_map_character(map[i][j], info) == false) {
 				return (false);
 			}
@@ -88,9 +76,6 @@ bool	is_last_newline(const char *content)
 
 int		ft_validate_map(char **map, t_info *info)
 {
-	// if (ft_validate_1(map, info) == FAIL) {
-	// 	return (FAIL);
-	// }
 	if (map[0] == NULL || map[1] == NULL) {
 		return (FAIL);
 	}

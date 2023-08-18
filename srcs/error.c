@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 10:00:47 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:50:40 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-void	ft_putchar_fd(int fd, char c)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(int fd, const char *str)
-{
-	if (str == NULL) {
-		return ;
-	}
-	size_t	str_size = ft_strlen(str);
-	write(fd, str, str_size);
-}
-
-void	error_message(const char *message)
+static void	error_message(const char *message)
 {
 	ft_putstr_fd(STDERR_FILENO, ERROR_PREFIX);
 	ft_putstr_fd(STDERR_FILENO, message);

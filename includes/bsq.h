@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/17 10:51:10 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:30:09 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ int				g_max;
 int				g_col;
 int				g_row;
 
+// libft
+int				ft_isspace(char c);
+int				ft_isdigit(int c);
+int				ft_isprint(int c);
 size_t			ft_strlen(const char *str);
 void			ft_putchar_fd(int fd, char c);
 void			ft_putstr_fd(int fd, const char *str);
@@ -68,6 +72,14 @@ int				ft_is_printable(char c);
 char			*ft_strdup(char *src);
 char			*ft_strjoin(char *s1, char *s2);
 int				ft_atoi(char *str);
+char			**ft_split(char const *s, char c);
+void			*ft_calloc(size_t count, size_t size);
+void			ft_bzero(void *s, size_t n);
+void			*ft_memset(void *b, int c, size_t len);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+// bsq
 int				ft_validate_5(char **map);
 t_info			*ft_prse(char **map);
 int				ft_validate_map(char **map, t_info *info);
@@ -77,14 +89,6 @@ int				ft_check_1(char **map, int col, int row, t_info *p_info);
 void			ft_make_map(char **map, t_info *p_info);
 void			set_bsq(t_bsq *p_bsq);
 int				ft_map_colsize(char **map);
-
-// ft_split
-char			**ft_split(char const *s, char c);
-void			*ft_calloc(size_t count, size_t size);
-void			ft_bzero(void *s, size_t n);
-void			*ft_memset(void *b, int c, size_t len);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 // error.c
 void			map_error_exit(t_error_kind type);
