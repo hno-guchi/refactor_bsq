@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/18 17:58:28 by hnoguchi         ###   ########.fr       */
+/*   Created: 2022/04/08 10:15:21 by hnoguchi          #+#    #+#             */
+/*   Updated: 2023/08/17 10:46:23 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-char	*ft_strdup(char *src)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*res;
-	int		i;
+	size_t	i;
+	size_t	s_size;
 
-	res = NULL;
 	i = 0;
-	while (src[i] != '\0') {
-		i++;
+	s_size = ft_strlen(src);
+	if (src != NULL && 0 < dstsize)
+	{
+		while (i < s_size && i < (dstsize - 1))
+		{
+			dst[i] = src[i];
+			i += 1;
+		}
+		dst[i] = '\0';
 	}
-	if (!(res = (char *)malloc(i + 1))) {
-		return (NULL);
-	}
-	i = 0;
-	while (src[i] != '\0') {
-		res[i] = src[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	return (s_size);
 }

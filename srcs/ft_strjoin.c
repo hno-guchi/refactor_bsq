@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:41:41 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/29 15:49:35 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:59:30 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -20,17 +20,18 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		size;
 
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = malloc(sizeof(char) * size)))
+	if (!(res = malloc(sizeof(char) * size))) {
 		return (NULL);
+	}
 	i = 0;
-	while (s1[i])
-	{
+	while (s1[i]) {
 		res[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j])
+	while (s2[j]) {
 		res[i++] = s2[j++];
+	}
 	res[i] = '\0';
 	return (res);
 }

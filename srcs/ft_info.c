@@ -6,11 +6,15 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 15:56:19 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:34:02 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "bsq.h"
+
+// bool	ft_isdigit(const char c) {
+// 	return ('0' <= c && c <= '9');
+// }
 
 int		ft_validate_5(char **map)
 {
@@ -25,17 +29,18 @@ int		ft_validate_5(char **map)
 	if (len < 4)
 		return (FAIL);
 	i = -1;
-	while (++i < len - 3)
-		if (!(line[i] >= '0' && line[i] <= '9'))
+	while (++i < len - 3) {
+		// if (!(line[i] >= '0' && line[i] <= '9')) {
+		if (ft_isdigit(line[i]) == false) {
 			return (FAIL);
-	if (!(ft_is_printable(line[len - 1]) &&
-				ft_is_printable(line[len - 2]) &&
-				ft_is_printable(line[len - 3])))
+		}
+	}
+	if (!(ft_isprint(line[len - 1]) && ft_isprint(line[len - 2]) && ft_isprint(line[len - 3]))) {
 		return (FAIL);
-	if (line[len - 1] == line[len - 2] ||
-			line[len - 2] == line[len - 3] ||
-			line[len - 3] == line[len - 1])
+	}
+	if (line[len - 1] == line[len - 2] || line[len - 2] == line[len - 3] || line[len - 3] == line[len - 1]) {
 		return (FAIL);
+	}
 	return (SUCCESS);
 }
 

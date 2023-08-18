@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/18 17:58:28 by hnoguchi         ###   ########.fr       */
+/*   Created: 2023/08/18 17:36:36 by hnoguchi          #+#    #+#             */
+/*   Updated: 2023/08/18 17:40:21 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-char	*ft_strdup(char *src)
+void	ft_putchar_fd(int fd, char c)
 {
-	char	*res;
-	int		i;
-
-	res = NULL;
-	i = 0;
-	while (src[i] != '\0') {
-		i++;
-	}
-	if (!(res = (char *)malloc(i + 1))) {
-		return (NULL);
-	}
-	i = 0;
-	while (src[i] != '\0') {
-		res[i] = src[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	write(fd, &c, 1);
 }

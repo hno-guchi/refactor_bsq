@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 18:51:43 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/18 17:09:58 by hnoguchi         ###   ########.fr       */
+/*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
+/*   Updated: 2023/08/15 23:02:31 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int	ft_atoi(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int res;
-	int sign;
-	int i;
+	size_t	i;
 
-	res = 0;
-	sign = 0;
 	i = 0;
-	while (ft_isspace(str[i])) {
+	while (str[i] != '\0') {
 		i++;
 	}
-	while (str[i] == '+' || str[i] == '-') {
-		if (str[i] == '-') {
-			sign++;
-		}
-		i++;
-	}
-	while (str[i] != '\0' && ft_isdigit(str[i])) {
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
-	if (sign % 2 == 1) {
-		return (res * -1);
-	}
-	return (res);
+	return (i);
 }

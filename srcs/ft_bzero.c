@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/18 17:58:28 by hnoguchi         ###   ########.fr       */
+/*   Created: 2022/04/08 09:51:50 by hnoguchi          #+#    #+#             */
+/*   Updated: 2023/08/17 10:45:15 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-char	*ft_strdup(char *src)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*res;
-	int		i;
-
-	res = NULL;
-	i = 0;
-	while (src[i] != '\0') {
-		i++;
-	}
-	if (!(res = (char *)malloc(i + 1))) {
-		return (NULL);
-	}
-	i = 0;
-	while (src[i] != '\0') {
-		res[i] = src[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	ft_memset(s, 0, n);
 }

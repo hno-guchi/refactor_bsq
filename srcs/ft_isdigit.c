@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 04:03:32 by louisnop         ###   ########.fr       */
+/*   Created: 2022/04/07 16:53:47 by hnoguchi          #+#    #+#             */
+/*   Updated: 2023/08/18 17:35:26 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-void	ft_putchar(char c)
+int	ft_isdigit(int c)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	while (*str)
-		ft_putchar(*str++);
-}
-
-void	ft_puterror(char *str)
-{
-	while (*str)
-		write(2, str++, 1);
+	if ('0' <= c && c <= '9') {
+		return (1);
+	}
+	return (0);
 }
