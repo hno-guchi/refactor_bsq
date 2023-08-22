@@ -6,7 +6,7 @@
 /*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:34:30 by hnoguchi          #+#    #+#             */
-/*   Updated: 2023/08/22 10:42:11 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:46:29 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 static size_t	ft_strnlen(const char *s, size_t n)
 {
-	size_t	len;
+	size_t	len = 0;
 
-	len = 0;
-	while (len < n)
-	{
-		if (s[len] == '\0')
+	while (len < n) {
+		if (s[len] == '\0') {
 			break ;
+		}
 		len += 1;
 	}
 	return (len);
@@ -28,22 +27,21 @@ static size_t	ft_strnlen(const char *s, size_t n)
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	d_len;
-	size_t	s_len;
+	size_t	i = 0;
+	size_t	d_len = ft_strnlen(dst, dstsize);
+	size_t	s_len = ft_strlen(src);
 	size_t	lcat_siz;
 
-	i = 0;
-	d_len = ft_strnlen(dst, dstsize);
-	s_len = ft_strlen(src);
-	if (dstsize <= d_len)
+	if (dstsize <= d_len) {
 		return (dstsize + s_len);
-	if (s_len < (dstsize - d_len - 1))
+	}
+	if (s_len < (dstsize - d_len - 1)) {
 		lcat_siz = s_len + 1;
-	else
+	}
+	else {
 		lcat_siz = dstsize - d_len - 1;
-	while (i < lcat_siz)
-	{
+	}
+	while (i < lcat_siz) {
 		dst[d_len + i] = src[i];
 		i += 1;
 	}
