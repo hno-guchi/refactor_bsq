@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:41:41 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/22 10:39:01 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:40:22 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static size_t	join_size(char const *s1, char const *s2)
 {
 	size_t	dstsize = 0;
-	size_t	s2_siz - 0;
+	size_t	s2_siz = 0;
 
 	if (s1 != NULL) {
 		dstsize = ft_strlen(s1);

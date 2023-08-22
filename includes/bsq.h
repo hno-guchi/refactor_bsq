@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/18 17:30:09 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:42:33 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			ft_putchar_fd(int fd, char c);
 void			ft_putstr_fd(int fd, const char *str);
 int				ft_is_printable(char c);
 char			*ft_strdup(char *src);
-char			*ft_strjoin(char *s1, char *s2);
+char			*ft_strjoin(char const *s1, char const *s2);
 int				ft_atoi(char *str);
 char			**ft_split(char const *s, char c);
 void			*ft_calloc(size_t count, size_t size);
@@ -78,6 +78,7 @@ void			ft_bzero(void *s, size_t n);
 void			*ft_memset(void *b, int c, size_t len);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 // bsq
 int				ft_validate_5(char **map);
