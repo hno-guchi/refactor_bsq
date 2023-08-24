@@ -6,7 +6,7 @@
 /*   By: hnoguchi <hnoguchi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:35:39 by hnoguchi          #+#    #+#             */
-/*   Updated: 2023/08/17 10:45:52 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/24 10:39:25 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	calc_siz;
 	char	*sub;
 
-	if (s == NULL)
+	if (s == NULL) {
 		return (NULL);
+	}
 	s_siz = ft_strlen(s);
 	calc_siz = 0;
-	if (len <= 0 || s_siz <= start)
+	if (len <= 0 || s_siz <= start) {
 		return (ft_strdup(""));
+	}
 	calc_siz = ft_strlen(&s[start]);
-	if (len < calc_siz)
+	if (len < calc_siz) {
 		calc_siz = len;
+	}
 	sub = (char *)ft_calloc(calc_siz + 1, sizeof(char));
-	if (sub == NULL)
+	if (sub == NULL) {
 		return (NULL);
+	}
 	(void)ft_strlcpy(sub, &s[start], calc_siz + 1);
 	return (sub);
 }

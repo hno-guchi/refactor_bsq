@@ -6,42 +6,39 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/18 17:34:02 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/24 10:47:57 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-// bool	ft_isdigit(const char c) {
-// 	return ('0' <= c && c <= '9');
-// }
-
-int		ft_validate_5(char **map)
+bool		is_validate_5(char **map)
 {
 	int		len;
 	char	*line;
 	int		i;
 
-	if (!map[0])
-		return (FAIL);
+	if (map[0] == NULL) {
+		return (false);
+	}
 	line = map[0];
 	len = ft_strlen(line);
-	if (len < 4)
-		return (FAIL);
+	if (len < 4) {
+		return (false);
+	}
 	i = -1;
 	while (++i < len - 3) {
-		// if (!(line[i] >= '0' && line[i] <= '9')) {
 		if (ft_isdigit(line[i]) == false) {
-			return (FAIL);
+			return (false);
 		}
 	}
 	if (!(ft_isprint(line[len - 1]) && ft_isprint(line[len - 2]) && ft_isprint(line[len - 3]))) {
-		return (FAIL);
+		return (false);
 	}
 	if (line[len - 1] == line[len - 2] || line[len - 2] == line[len - 3] || line[len - 3] == line[len - 1]) {
-		return (FAIL);
+		return (false);
 	}
-	return (SUCCESS);
+	return (true);
 }
 
 t_info	*ft_prse(char **map)

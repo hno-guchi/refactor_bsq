@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/22 10:42:33 by hnoguchi         ###   ########.fr       */
+/*   Updated: 2023/08/24 10:47:33 by hnoguchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 // bsq
-int				ft_validate_5(char **map);
+bool			is_validate_5(char **map);
 t_info			*ft_prse(char **map);
 int				ft_validate_map(char **map, t_info *info);
 bool			is_last_newline(const char *content);
